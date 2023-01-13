@@ -1,5 +1,7 @@
 package kr.avengers.network;
 
+import kr.avengers.network.player.SetPlayerMaxHealth;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Core extends JavaPlugin {
@@ -11,7 +13,10 @@ public class Core extends JavaPlugin {
         getLogger().info("aSuite Enabled.");
         getLogger().info("Made for Avengers.mcv.kr");
         getLogger().info(" ");
+        onLoad();
+        getLogger().info("Loaded all necessities!");
     }
+
 
     public void onLoad() {
         registerCommands();
@@ -19,7 +24,7 @@ public class Core extends JavaPlugin {
     }
 
     public void registerListeners() {
-        // #Register Listeners here
+        Bukkit.getPluginManager().registerEvents(new SetPlayerMaxHealth(), this);
     }
 
     public void registerCommands() {
