@@ -1,3 +1,7 @@
-name: aSuite
+name: AvengersCore
 main: kr.avengers.network.Core
-version: 1.0
+version: 1.1
+commands:
+  hitdelaypatch:
+    usage: /hitdelaypatch
+    description: Main command
