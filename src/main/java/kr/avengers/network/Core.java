@@ -1,5 +1,6 @@
 package kr.avengers.network;
 
+import kr.avengers.network.player.AntiFallDamage;
 import kr.avengers.network.player.PlayerJoinLobby;
 import kr.avengers.network.player.SetPlayerMaxHealth;
 import org.bukkit.Bukkit;
@@ -34,6 +35,7 @@ public class Core extends JavaPlugin {
     public void registerListeners() {
         Bukkit.getPluginManager().registerEvents(new SetPlayerMaxHealth(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerJoinLobby(), this);
+        Bukkit.getPluginManager().registerEvents(new AntiFallDamage(), this);
         }
 
     public void registerCommands() {
