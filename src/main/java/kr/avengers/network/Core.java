@@ -1,6 +1,7 @@
 package kr.avengers.network;
 
 import kr.avengers.network.player.AntiFallDamage;
+import kr.avengers.network.player.BountyEvent;
 import kr.avengers.network.player.PlayerJoinLobby;
 import kr.avengers.network.player.SetPlayerMaxHealth;
 import org.bukkit.Bukkit;
@@ -10,9 +11,13 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Core extends JavaPlugin {
 
     Core instance;
+    public static List<String> worlds = new ArrayList<>();
     private int noDamageTicks = 20;
 
     public void onEnable() {
@@ -36,6 +41,7 @@ public class Core extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new SetPlayerMaxHealth(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerJoinLobby(), this);
         Bukkit.getPluginManager().registerEvents(new AntiFallDamage(), this);
+        Bukkit.getPluginManager().registerEvents(new BountyEvent(), this);
         }
 
     public void registerCommands() {

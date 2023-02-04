@@ -12,6 +12,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
@@ -34,18 +35,16 @@ public class SetPlayerMaxHealth implements Listener {
     }
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
-    public void onRespawn(PlayerRespawnEvent e) {
-        Player player = e.getPlayer();
-        player.setMaxHealth(40D);
-        player.setHealth(40D);
-    }
-
-    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onUnEquip(PvpClassUnequipEvent e) {
         UUID uuid = e.getPlayer();
         Player player = Bukkit.getPlayer(uuid);
         player.setMaxHealth(40D);
         PlayerStatics.Health2 = player.getHealth();
+
+        if (PlayerStatics.Health2 <= 0) {
+            player.setMaxHealth(40D);
+            PlayerStatics.Health2 = 40D;
+        }
     }
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
